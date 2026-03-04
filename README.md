@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 ## 🧠 Overall Architecture
 This is the framework of nodule edge attention multiscale fusion convolutional autoencoder (NEAMF-CAE).
-![Framework of the nodule edge attention multiscale fusion convolutional autoencoder (NEAMF-CAE).](./over_stru.pdf)
+![Framework of the nodule edge attention multiscale fusion convolutional autoencoder (NEAMF-CAE).](./over_stru.png)
 
 
 ---
