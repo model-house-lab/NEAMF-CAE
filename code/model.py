@@ -169,7 +169,6 @@ class Transformer3DOptimized(layers.Layer):
         attn_output = self.dropout1(attn_output, training=training)
         out1 = self.layernorm1(x + attn_output)
 
-        # 前馈神经网络
         ffn_output = self.ffn(out1)
         ffn_output = self.dropout2(ffn_output, training=training)
         out2 = self.layernorm2(out1 + ffn_output)
@@ -285,7 +284,6 @@ def NEAMF_CAE(input_shape, text_input_shape, batch_size=None):
 
     encoded1 = spatial_attention_and_reduce(x1, name_prefix="branch1")
 
-    # ================= 分支 2 =================
     combined_input_2 = Add()([input_img_2, input_math_2])
     x2 = multi_scale_module(output_channel=2)(combined_input_2)
     m2 = Transformer3DOptimized(d_model=2, num_heads=4, d_ff=64, window_size=(4, 4, 4))(input_math_2)
@@ -314,4 +312,5 @@ def NEAMF_CAE(input_shape, text_input_shape, batch_size=None):
 
     model = Model(inputs=[input_img, input_math, input_text], outputs=final_output)
     return model
+
 
